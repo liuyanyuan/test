@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding: 0;}
+        body{padding: 50px;}
+        ul,li{list-style: none;}
+        .hide{display: none;}
+        .ov-h{overflow: hidden}
+        .div1,.div2_child,.div3,.div3_child{overflow: hidden;}
+        .div1 ul li{float: left;width: 40px;height: 40px;border-radius: 20px;background: #ccc; text-align: center; line-height: 40px; margin-right: 15px;}
+        .div1 ul li.cur{background: #000000; color: #fff;}
+        .div2_child{width:800px; height:100px; overflow: hidden; margin-top: 20px;}
+        .div2_child ul li{width: 150px; height: 98px;float: left; margin-right: 15px; background: #00B7FF; text-align: center; border: 1px solid transparent;}
+        .div2_child ul li.cur{border-color:#000;}
+        .div3{width: 800px; height: 100px; margin-top: 20px; background: #eee;}
+        .div3_child div ul li{float: left; margin: 20px 30px;}
+    </style>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script>
+        $(function(){
+            var c_index = 0;
+            $(".div1 ul li").hover(function(){
+                var c_this = $(this);
+                c_index = c_this.index();
+                c_this.addClass("cur").siblings().removeClass("cur");
+                $(".div2>div").eq(c_index).show().siblings().hide();
+                $(".div2>div").eq(c_index).find("li").eq(0).addClass("cur").siblings().removeClass("cur");
+                contentChange(c_index,0);
+            });
+
+            $(".div2_child ul li").hover(function(){
+                var _this2 = $(this);
+                var index2 = _this2.index();
+                _this2.addClass("cur").siblings().removeClass("cur");
+                contentChange(c_index,index2);
+            });
+
+            function contentChange(child1,child2){
+                $(".div3>div.div3_child").eq(child1).show().siblings().hide();
+                $(".div3>div.div3_child").eq(child1).find("div").eq(child2).show().siblings().hide();
+            }
+        });
+    </script>
+</head>
+<body onbeforeunload="return '确定离开此页面？离开后将不会保存某些数据'">
+    <div class="div1">
+        <ul>
+            <li class="cur">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div class="div2">
+        <div class="div2_child">
+            <ul>
+                <li class="cur">div2_child1</li>
+                <li>div2_child2</li>
+                <li>div2_child3</li>
+                <li>div2_child4</li>
+            </ul>
+        </div>
+        <div class="div2_child hide">
+            <ul>
+                <li>div2_child11</li>
+                <li>div2_child12</li>
+                <li>div2_child13</li>
+                <li>div2_child14</li>
+            </ul>
+        </div>
+        <div class="div2_child hide">
+            <ul>
+                <li>div2_child21</li>
+                <li>div2_child32</li>
+                <li>div2_child33</li>
+                <li>div2_child34</li>
+            </ul>
+        </div>
+        <div class="div2_child hide">
+            <ul>
+                <li>div2_child41</li>
+                <li>div2_child42</li>
+                <li>div2_child43</li>
+                <li>div2_child44</li>
+            </ul>
+        </div>
+    </div>
+    <div class="div3">
+        <div class="div3_child">
+            <div class="ov-h">
+                <ul>
+                    <li>地址1-1</li>
+                    <li>地址1-1</li>
+                    <li>地址1-1</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址1-2</li>
+                    <li>地址1-2</li>
+                    <li>地址1-2</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址1-3</li>
+                    <li>地址1-3</li>
+                    <li>地址1-3</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址1-4</li>
+                    <li>地址1-4</li>
+                    <li>地址1-4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="div3_child hide">
+            <div class="ov-h">
+                <ul>
+                    <li>地址2-1</li>
+                    <li>地址2-1</li>
+                    <li>地址2-1</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址2-2</li>
+                    <li>地址2-2</li>
+                    <li>地址2-2</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址2-3</li>
+                    <li>地址2-3</li>
+                    <li>地址2-3</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址2-4</li>
+                    <li>地址2-4</li>
+                    <li>地址2-4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="div3_child hide">
+            <div class="ov-h">
+                <ul>
+                    <li>地址3-1</li>
+                    <li>地址3-1</li>
+                    <li>地址3-1</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址3-2</li>
+                    <li>地址3-2</li>
+                    <li>地址3-2</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址3-3</li>
+                    <li>地址3-3</li>
+                    <li>地址3-3</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址3-4</li>
+                    <li>地址3-4</li>
+                    <li>地址3-4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="div3_child hide">
+            <div class="ov-h">
+                <ul>
+                    <li>地址4-1</li>
+                    <li>地址4-1</li>
+                    <li>地址4-1</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址4-2</li>
+                    <li>地址4-2</li>
+                    <li>地址4-2</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址4-3</li>
+                    <li>地址4-3</li>
+                    <li>地址4-3</li>
+                </ul>
+            </div>
+            <div class="ov-h hide">
+                <ul>
+                    <li>地址4-4</li>
+                    <li>地址4-4</li>
+                    <li>地址4-4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
